@@ -1,0 +1,34 @@
+package com.example.food.components
+
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun VerifyTextField(
+    value: String,
+    onValueChange:(String)->Unit,
+    modifier: Modifier = Modifier
+){
+
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier.width(55.dp),
+        shape = RoundedCornerShape(15.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedTextColor = MaterialTheme.colorScheme.secondary,
+            unfocusedTextColor = MaterialTheme.colorScheme.secondary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.secondaryContainer,
+            focusedBorderColor = MaterialTheme.colorScheme.secondaryContainer))
+}
