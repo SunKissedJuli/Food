@@ -53,7 +53,7 @@ fun LoginScreen(navController: NavHostController){
         Column(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.4f),
+                .fillMaxHeight(0.3f),
             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Text(text = stringResource(R.string.login), style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.background)
@@ -126,7 +126,7 @@ fun LoginScreen(navController: NavHostController){
                     modifier = Modifier.align(Alignment.CenterHorizontally))
 
                 Row(Modifier.fillMaxWidth()
-                        .padding(top = 20.dp, bottom = 10.dp), horizontalArrangement = Arrangement.Center){
+                        .padding(top = 15.dp, bottom = 5.dp), horizontalArrangement = Arrangement.Center){
                     TextButton(onClick = { navController.navigate(Screen.Registration.route) }) {
                         Text(text = stringResource(R.string.no_account),
                             style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSecondary)
@@ -142,7 +142,7 @@ fun LoginScreen(navController: NavHostController){
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .padding(top = 10.dp, bottom = 15.dp),
+                        .padding(top = 10.dp, bottom = 5.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly){
 
                     IconButton(onClick = { /*TODO*/ }, modifier = Modifier.size(70.dp)) {

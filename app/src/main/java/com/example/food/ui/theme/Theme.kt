@@ -8,22 +8,32 @@ import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColorScheme(
     primaryContainer = ButtonColor,
+    inversePrimary = LightOrange,
     secondary = DarkTextColor,
     onSecondary = LightTextColor,
     secondaryContainer = RoundedGrayTextField,
+    tertiaryContainer = SearchBarColor,
     tertiary = PlaceholderText,
+    onSurfaceVariant = Border,
     background = Background,
-    onBackground = DarkBackground
+    onBackground = DarkBackground,
+    onSurface = SearchIconColor,
+    onTertiary = MoreDarkTextColor
 )
 
 private val LightColorPalette = lightColorScheme(
     primaryContainer = ButtonColor,
+    inversePrimary = LightOrange,
     secondary = DarkTextColor,
     onSecondary = LightTextColor,
     secondaryContainer = RoundedGrayTextField,
+    tertiaryContainer = SearchBarColor,
     tertiary = PlaceholderText,
+    onSurfaceVariant = Border,
     background = Background,
     onBackground = DarkBackground,
+    onSurface = SearchIconColor,
+    onTertiary = MoreDarkTextColor
 
 
     /* Other default colors to override

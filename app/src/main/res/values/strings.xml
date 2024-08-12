@@ -20,5 +20,14 @@
     <string name="code">Code</string>
     <string name="resend_code">Resend in.50sec</string>
     <string name="verification_text">We have sent a code to your email</string>
+    <string name="categories">All Categories</string>
+    <string name="see_categories">See All</string>
+    <string name="search_hint">Search dishes, restaurants</string>
+    <string name="hello">Hey Halal,</string>
+    <string name="good_afternoon">Good Afternoon!</string>
+    <string name="search_resent">Recent Keywords</string>
+    <string name="suggested_rest">Suggested Restaurants</string>
+
+
 
 </resources>

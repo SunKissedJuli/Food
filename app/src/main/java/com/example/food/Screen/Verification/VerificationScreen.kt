@@ -55,7 +55,7 @@ fun VerificationScreen(navController: NavHostController){
         Column(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.4f),
+                .fillMaxHeight(0.3f),
             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Text(text = stringResource(R.string.verification), style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.background)
@@ -115,7 +115,7 @@ fun VerificationScreen(navController: NavHostController){
 
                 Spacer(modifier = Modifier.height(25.dp))
 
-                RoundedOrangeButton(onClick = {}, buttonText = stringResource(R.string.verify),
+                RoundedOrangeButton(onClick = {navController.navigate(Screen.Home.route)}, buttonText = stringResource(R.string.verify),
                     modifier = Modifier.align(Alignment.CenterHorizontally))
             }
         }

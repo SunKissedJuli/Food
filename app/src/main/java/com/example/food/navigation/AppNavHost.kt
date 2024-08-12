@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.food.Screen.Home.HomeScreen
 import com.example.food.Screen.Login.LoginScreen
 import com.example.food.Screen.Registration.RegistrationScreen
 import com.example.food.Screen.Splash.SplashScreen
@@ -36,6 +37,10 @@ fun AppNavHost(
 
         composable(Screen.Verification.route) {
             VerificationScreen(navController)
+        }
+
+        composable(Screen.Home.route) {
+            HomeScreen(navController)
         }
     }
 }
