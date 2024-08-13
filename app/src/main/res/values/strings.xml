@@ -28,7 +28,9 @@
     <string name="search_resent">Recent Keywords</string>
     <string name="suggested_rest">Suggested Restaurants</string>
     <string name="search_popular">Popular Fast food</string>
-    <string name="details">Popular Fast food</string>
+    <string name="size">SIZE:</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="add_to_cart">Add to cart</string>
 
 
 

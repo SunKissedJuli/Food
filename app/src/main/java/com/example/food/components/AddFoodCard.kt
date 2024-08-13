@@ -2,6 +2,7 @@ package com.example.food.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.example.food.R
 
 @Composable
-fun AddFoodCard(name: String = "European Pizza", description: String = "Uttora Coffe House", cost: String = "\$40"){
+fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza", description: String = "Uttora Coffe House", cost: String = "\$40"){
 
     Box(Modifier.fillMaxWidth().
     background(Color.Transparent)
@@ -42,7 +43,8 @@ fun AddFoodCard(name: String = "European Pizza", description: String = "Uttora C
                 .align(Alignment.Center)
                 .height(175.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(MaterialTheme.colorScheme.background)) {
+                .background(MaterialTheme.colorScheme.background)
+                .clickable { onClick() }) {
 
             Column(Modifier.fillMaxSize()
                     .padding(top = 10.dp, bottom = 10.dp, start = 20.dp, end = 20.dp),

@@ -10,6 +10,12 @@ import com.example.food.R
 
 // Set of Material typography styles to start with
 val FoodTypography = Typography(
+    displayLarge = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sen)),
+        fontWeight = FontWeight.Normal,
+        fontSize = 28.sp,
+        lineHeight = 33.69.sp),
+
     bodyLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.sen)),
         fontWeight = FontWeight.Normal,
@@ -59,6 +65,12 @@ val FoodTypography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 20.sp,
         lineHeight = 24.06.sp),
+
+    titleSmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sen)),
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 24.sp),
 
 )
 

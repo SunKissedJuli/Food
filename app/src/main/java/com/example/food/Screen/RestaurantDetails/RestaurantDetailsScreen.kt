@@ -33,6 +33,7 @@ import com.example.food.components.AddFoodCard
 import com.example.food.components.ButtonBack
 import com.example.food.components.ButtonMenu
 import com.example.food.components.CategoryComponent
+import com.example.food.components.DetailsBlock
 import com.example.food.components.RestaurantComponentChoose
 import com.example.food.navigation.Screen
 
@@ -58,26 +59,7 @@ fun RestaurantDetailsScreen(navController: NavHostController){
                 Modifier
                     .fillMaxSize()
                     .padding(20.dp)) {
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-                    Icon(painter = painterResource(R.drawable.icon_star), contentDescription = "",
-                        tint = MaterialTheme.colorScheme.primaryContainer)
-                    Text(text = uiState.star, style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onTertiary)
-                    Spacer(modifier = Modifier.width(20.dp))
-
-                    Icon(painter = painterResource(R.drawable.icon_car), contentDescription = "",
-                        tint = MaterialTheme.colorScheme.primaryContainer)
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Text(text = uiState.deliveryCost, style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onTertiary)
-                    Spacer(modifier = Modifier.width(20.dp))
-
-                    Icon(painter = painterResource(R.drawable.icon_time), contentDescription = "",
-                        tint = MaterialTheme.colorScheme.primaryContainer)
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Text(text = uiState.time, style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onTertiary)
-                }
+                DetailsBlock(star = uiState.star, deliveryCost = uiState.deliveryCost, time = uiState.time)
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(text = uiState.name,
@@ -105,16 +87,12 @@ fun RestaurantDetailsScreen(navController: NavHostController){
         items(5){
             Row(Modifier.fillMaxWidth()){
                 Column(Modifier.fillMaxWidth(0.5f)) {
-                    AddFoodCard()
+                    AddFoodCard({navController.navigate(Screen.FoodDetails.route)})
                 }
-                AddFoodCard()
+                AddFoodCard({navController.navigate(Screen.FoodDetails.route)})
             }
             Spacer(modifier = Modifier.height(5.dp))
         }
-
-
-
-
 
     }
     Box(

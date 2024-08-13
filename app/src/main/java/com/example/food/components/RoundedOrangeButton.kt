@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 fun RoundedOrangeButton(onClick: ()-> Unit, buttonText: String, modifier: Modifier = Modifier){
     Button(onClick = onClick,
         shape = RoundedCornerShape(10.dp),
-        modifier = modifier.fillMaxWidth().height(50.dp),
+        modifier = modifier.fillMaxWidth().height(62.dp),
         colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primaryContainer)) {
         Text(text = buttonText.uppercase(), color = MaterialTheme.colorScheme.background,
             style = MaterialTheme.typography.bodyMedium)
