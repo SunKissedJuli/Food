@@ -28,24 +28,37 @@ val FoodTypography = Typography(
         fontSize = 13.sp,
         lineHeight = 15.64.sp),
 
-    titleMedium = TextStyle(
-        fontFamily = FontFamily(Font(R.font.sen)),
-        fontWeight = FontWeight.Medium,
-        fontSize = 20.sp,
-        lineHeight = 24.06.sp
-    ),
-
     headlineLarge = TextStyle(
         fontSize = 30.sp,
         fontWeight = FontWeight.Bold,
         lineHeight = 36.09.sp,
         fontFamily = FontFamily(Font(R.font.sen))),
 
+    headlineMedium = TextStyle(
+        fontSize = 15.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 18.05.sp,
+        letterSpacing = -0.33.sp,
+        fontFamily = FontFamily(Font(R.font.sen))),
+
     headlineSmall = TextStyle(
         fontSize = 16.sp,
-    fontWeight = FontWeight.Thin,
-    lineHeight = 26.sp,
-    fontFamily = FontFamily(Font(R.font.sen)),
+        fontWeight = FontWeight.Thin,
+        lineHeight = 26.sp,
+        fontFamily = FontFamily(Font(R.font.sen))),
+
+    titleLarge  = TextStyle(
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Medium,
+        lineHeight = 19.25.sp,
+        letterSpacing = -0.33.sp,
+        fontFamily = FontFamily(Font(R.font.sen))),
+
+    titleMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sen)),
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        lineHeight = 24.06.sp),
 
 )
 
@@ -65,4 +78,3 @@ val FoodTypography = Typography(
         letterSpacing = 0.5.sp
     )
     */
-)

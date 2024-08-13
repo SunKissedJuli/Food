@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColorScheme(
     primaryContainer = ButtonColor,
+    onPrimaryContainer = MiddleOrange,
     inversePrimary = LightOrange,
     secondary = DarkTextColor,
     onSecondary = LightTextColor,
@@ -23,6 +24,7 @@ private val DarkColorPalette = darkColorScheme(
 
 private val LightColorPalette = lightColorScheme(
     primaryContainer = ButtonColor,
+    onPrimaryContainer = MiddleOrange,
     inversePrimary = LightOrange,
     secondary = DarkTextColor,
     onSecondary = LightTextColor,

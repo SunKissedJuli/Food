@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.food.R
 
 @Composable
@@ -29,7 +30,7 @@ fun RestoranCard(name: String, description: String, onClick: ()->Unit = {},
         Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .clickable { onClick }) {
+            .clickable { onClick() }) {
         Box(modifier = Modifier
             .fillMaxWidth()
             .height(170.dp)

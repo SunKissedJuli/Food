@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -46,7 +47,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.food.R
 import com.example.food.components.CategoryComponent
+import com.example.food.components.CustomSearchBar
+import com.example.food.components.PopularFastfoodCard
 import com.example.food.components.RestoranCard
+import com.example.food.components.SuggesterRestaurantsItem
+import com.example.food.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -71,68 +76,74 @@ fun HomeScreen(navController: NavHostController){
                     fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onTertiary)
             }
 
-            SearchBar(query = uiState.searchText, onQueryChange = {viewModel.updateSearchString(it)},
+            CustomSearchBar(
+                query = uiState.searchText, onQueryChange = {viewModel.updateSearchString(it)},
                 onSearch = {viewModel.updateSearchContainer()},
-                active = uiState.searchContainer, onActiveChange = {viewModel.updateSearchContainer()},
-                modifier = Modifier
-                    .fillMaxWidth(),
-                colors = SearchBarDefaults.colors(
-                    containerColor =  MaterialTheme.colorScheme.tertiaryContainer,
-                     inputFieldColors = TextFieldDefaults.colors(
-                        focusedTextColor = MaterialTheme.colorScheme.onTertiary,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
-                        cursorColor = MaterialTheme.colorScheme.onTertiary)),
-                placeholder = {
-                    Text(text = stringResource(R.string.search_hint),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSecondary)},
-                leadingIcon = {
+                hint = stringResource(R.string.search_hint),
+                leadingIcon =  {
                     Icon(painter = painterResource(id = R.drawable.icon_search),
                         contentDescription = "",
                         modifier = Modifier.padding(start = 5.dp),
                         tint = MaterialTheme.colorScheme.onSurface)}){
 
-                   Column(
-                       Modifier
-                           .fillMaxSize()
-                           .background(MaterialTheme.colorScheme.background)) {
-                       Column(Modifier.padding(10.dp)) {
-                           Spacer(modifier = Modifier.height(10.dp))
-                           Text(text = stringResource(R.string.search_resent),
-                               style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
-                           Spacer(modifier = Modifier.height(10.dp))
-                           LazyRow(Modifier.fillMaxWidth()) {
-                               items(5){
-                                   Box(
-                                       Modifier
-                                           .height(45.dp)
-                                           .clip(RoundedCornerShape(30.dp))
-                                           .background(MaterialTheme.colorScheme.background)
-                                           .border(
-                                               width = 2.dp, shape = RoundedCornerShape(30.dp),
-                                               color = MaterialTheme.colorScheme.onSurfaceVariant
-                                           )) {
-                                       Row(Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
-                                           Spacer(modifier = Modifier.width(15.dp))
-                                           Text(text ="Hot Dog", style = MaterialTheme.typography.bodyMedium,
-                                               color = MaterialTheme.colorScheme.secondary)
-                                           Spacer(modifier = Modifier.width(15.dp))
-                                       }
-                                   }
-                                   Spacer(modifier = Modifier.width(10.dp))
-                               }
-                           }
-                           Spacer(modifier = Modifier.height(20.dp))
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)) {
+                    Column(Modifier.padding(10.dp)) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = stringResource(R.string.search_resent),
+                            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        LazyRow(Modifier.fillMaxWidth()) {
+                            items(5){
+                                Box(
+                                    Modifier
+                                        .height(50.dp)
+                                        .clip(RoundedCornerShape(30.dp))
+                                        .background(MaterialTheme.colorScheme.background)
+                                        .border(
+                                            width = 2.dp, shape = RoundedCornerShape(30.dp),
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )) {
+                                    Row(Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                                        Spacer(modifier = Modifier.width(15.dp))
+                                        Text(text ="Hot Dog", style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.secondary)
+                                        Spacer(modifier = Modifier.width(15.dp))
+                                    }
+                                }
+                                Spacer(modifier = Modifier.width(10.dp))
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
 
-                           Text(text = stringResource(R.string.suggested_rest),
-                               style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
+                        Text(text = stringResource(R.string.suggested_rest),
+                            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
 
+                        Spacer(modifier = Modifier.height(5.dp))
 
+                        Column(Modifier.fillMaxHeight(0.7f)) {
+                            repeat(3){
+                                Spacer(modifier = Modifier.height(10.dp))
+                                SuggesterRestaurantsItem()
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(text = stringResource(R.string.search_popular),
+                            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
 
+                        Spacer(modifier = Modifier.height(10.dp))
 
-                       }
-                   }
+                        LazyRow{
+                            items(5){
+                                PopularFastfoodCard()
+                                Spacer(modifier = Modifier.width(10.dp))
+                            }
+                        }
 
+                    }
+                }
             }
         }
 
@@ -173,7 +184,8 @@ fun HomeScreen(navController: NavHostController){
                 LazyColumn(Modifier.fillMaxWidth()) {
                     items(5){
                         Spacer(modifier = Modifier.height(5.dp))
-                        RestoranCard(name = "Rose Garden Restaurant", description = "Burger - Chiken - Riche - Wings")
+                        RestoranCard(name = "Rose Garden Restaurant", description = "Burger - Chiken - Riche - Wings",
+                            onClick = {navController.navigate(Screen.RestauranDetails.route)})
                         Spacer(modifier = Modifier.height(10.dp))
                     }
                 }
