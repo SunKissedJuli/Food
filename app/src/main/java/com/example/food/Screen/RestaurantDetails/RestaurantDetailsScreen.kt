@@ -86,11 +86,16 @@ fun RestaurantDetailsScreen(navController: NavHostController){
                 LazyRow(Modifier.fillMaxWidth()) {
                     items(5){
                         Spacer(modifier = Modifier.width(5.dp))
-                        RestaurantComponentChoose(categoryName = "Burger")
+                        RestaurantComponentChoose(categoryName = stringResource(R.string.burger))
                         Spacer(modifier = Modifier.width(10.dp))
                     }
                 }
-                Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(25.dp))
+
+                Text(text =stringResource(R.string.burger_10),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Normal)
+                Spacer(modifier = Modifier.height(5.dp))
             }
         }
 

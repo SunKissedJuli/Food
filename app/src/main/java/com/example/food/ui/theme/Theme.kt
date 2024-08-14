@@ -24,6 +24,8 @@ private val DarkColorPalette = darkColorScheme(
     surfaceContainer = GrayStarColor,
     surfaceBright = ButtonColor,
     surfaceDim = PrisingTextColor,
+    surfaceTint = FavoriteOrange,
+    surfaceVariant = IngredientColor
 )
 
 private val LightColorPalette = lightColorScheme(
@@ -44,6 +46,8 @@ private val LightColorPalette = lightColorScheme(
     surfaceContainer = GrayStarColor,
     surfaceBright = ButtonColor,
     surfaceDim = PrisingTextColor,
+    surfaceTint = FavoriteOrange,
+    surfaceVariant = IngredientColor
 
 
     /* Other default colors to override

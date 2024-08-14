@@ -44,6 +44,8 @@
     <string name="offer_delivery">Delivery</string>
     <string name="offer_pick_up">Pick Up</string>
     <string name="offer">Offer</string>
+    <string name="burger">Burger</string>
+    <string name="burger_10">Burger(10)</string>
     <string name="offer_online_pay">Online payment available</string>
 
 

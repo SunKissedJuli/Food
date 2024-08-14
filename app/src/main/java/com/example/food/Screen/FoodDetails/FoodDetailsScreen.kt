@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -33,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.food.R
 import com.example.food.components.ButtonBack
+import com.example.food.components.ButtonFavorite
 import com.example.food.components.ButtonMenu
 import com.example.food.components.DetailsBlock
 import com.example.food.components.OvalCounter
@@ -128,7 +131,23 @@ fun FoodDetailsScreen(navController: NavHostController){
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.secondary)
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(15.dp))
+
+                Row(Modifier.fillMaxWidth()){
+                    repeat(5){
+                        Box(
+                            Modifier
+                                .size(55.dp)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.surfaceVariant)){
+                            Icon(painter = painterResource(R.drawable.icon_salt),
+                                contentDescription = "",
+                                modifier = Modifier.align(Alignment.Center),
+                                tint = MaterialTheme.colorScheme.primaryContainer)
+                        }
+                        Spacer(modifier = Modifier.width(20.dp))
+                    }
+                }
 
 
             }
@@ -139,7 +158,7 @@ fun FoodDetailsScreen(navController: NavHostController){
         Modifier
             .fillMaxSize()
             .padding(10.dp)){
-        ButtonBack({navController.navigate(Screen.Home.route)})
-        ButtonMenu(modifier = Modifier.align(Alignment.TopEnd))
+        ButtonBack({navController.navigate(Screen.RestauranDetails.route)})
+        ButtonFavorite(modifier = Modifier.align(Alignment.TopEnd))
     }
 }
