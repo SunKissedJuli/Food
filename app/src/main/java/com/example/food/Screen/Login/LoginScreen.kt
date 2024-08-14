@@ -114,7 +114,7 @@ fun LoginScreen(navController: NavHostController){
                             color = MaterialTheme.colorScheme.tertiary)
                     }
 
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = { navController.navigate(Screen.ForgotPassword.route) }) {
                         Text(text = stringResource(R.string.forgot_password),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.primaryContainer)
