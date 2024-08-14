@@ -16,6 +16,12 @@ val FoodTypography = Typography(
         fontSize = 28.sp,
         lineHeight = 33.69.sp),
 
+    displayMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sen)),
+        fontWeight = FontWeight.Medium,
+        fontSize = 17.sp,
+        lineHeight = 22.sp),
+
     bodyLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.sen)),
         fontWeight = FontWeight.Normal,

@@ -6,7 +6,8 @@ data class FoodDetailsUiState(
     val deliveryCost: String = "Free",
     val name: String = "Burger Bistro",
     val restName: String = "Rose Garden",
-    val cost: String = "\$32",
+    val firstCost: Int = 32,
+    val cost: String = "32",
     val count: Int = 0,
     val description: String = "Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
 )

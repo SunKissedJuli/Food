@@ -56,13 +56,13 @@ fun FoodDetailsScreen(navController: NavHostController){
                     Row(Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically){
-                        Text(text = uiState.cost,
+                        Text(text = stringResource(R.string.dollar) + uiState.cost,
                             style = MaterialTheme.typography.displayLarge,
                             color = MaterialTheme.colorScheme.onTertiary )
                         OvalCounter(
                             count = uiState.count,
-                            onIncrement = {  },
-                            onDeIncrement = {  })
+                            onIncrement = { viewModel.updateCounterPlus() },
+                            onDeIncrement = { viewModel.updateCounterMinus() })
                     }
                     Spacer(modifier = Modifier.height(20.dp))
                     
@@ -122,7 +122,7 @@ fun FoodDetailsScreen(navController: NavHostController){
                     SizeBlock(sizes =  listOf("10”", "14”", "18”"))
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 Text(text = stringResource(R.string.ingredients).uppercase(),
                     style = MaterialTheme.typography.titleSmall,

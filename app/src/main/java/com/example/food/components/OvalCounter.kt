@@ -29,51 +29,42 @@ fun OvalCounter(
     onDeIncrement: ()-> Unit,
     modifier: Modifier = Modifier
 ) {
-    Box(
-        modifier = modifier
-            .size(130.dp, 55.dp)
-            .clip(RoundedCornerShape(30.dp))
-            .background(MaterialTheme.colorScheme.onBackground)
-            .padding(horizontal = 10.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Row(
-            modifier = Modifier.fillMaxSize(),
+    Box(modifier = modifier.size(130.dp, 55.dp)
+        .clip(RoundedCornerShape(30.dp))
+        .background(MaterialTheme.colorScheme.onBackground)
+        .padding(horizontal = 10.dp),
+        contentAlignment = Alignment.Center) {
+
+        Row(modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween // Располагаем элементы слева
-        ) {
+            horizontalArrangement = Arrangement.SpaceBetween) {
+
             IconButton(onClick = onDeIncrement) {
                 Row(Modifier.size(28.dp).clip(CircleShape)
                     .background(MaterialTheme.colorScheme.secondary),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center){
-                    Icon(
-                        painter = painterResource(id = R.drawable.icon_simple_minus), // Замените на вашу иконку
+                    Icon(painter = painterResource(id = R.drawable.icon_simple_minus),
                         contentDescription = "Increment",
                         tint = MaterialTheme.colorScheme.background )
                 }
             }
 
-            // Число по центру
-            Text(
-                text = count.toString(),
+            Text(text = count.toString(),
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.background,
-                modifier = Modifier
-                    .weight(1f)
-                    .wrapContentSize(Alignment.Center)
-            )
+                modifier = Modifier.weight(1f)
+                    .wrapContentSize(Alignment.Center))
 
             IconButton(onClick = onIncrement) {
                 Row(Modifier.size(28.dp).clip(CircleShape)
                     .background(MaterialTheme.colorScheme.secondary),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center){
-                    Icon(
-                        painter = painterResource(id = R.drawable.icon_simple_plus), // Замените на вашу иконку
+
+                    Icon(painter = painterResource(id = R.drawable.icon_simple_plus),
                         contentDescription = "Increment",
-                        tint = MaterialTheme.colorScheme.background // Цвет иконки
-                    )
+                        tint = MaterialTheme.colorScheme.background)
                 }
 
             }

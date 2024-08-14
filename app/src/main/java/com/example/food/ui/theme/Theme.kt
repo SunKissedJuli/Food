@@ -15,11 +15,15 @@ private val DarkColorPalette = darkColorScheme(
     secondaryContainer = RoundedGrayTextField,
     tertiaryContainer = SearchBarColor,
     tertiary = PlaceholderText,
+    onTertiaryContainer = ExitButtonGray,
     onSurfaceVariant = Border,
     background = Background,
     onBackground = DarkBackground,
     onSurface = SearchIconColor,
-    onTertiary = MoreDarkTextColor
+    onTertiary = MoreDarkTextColor,
+    surfaceContainer = GrayStarColor,
+    surfaceBright = ButtonColor,
+    surfaceDim = PrisingTextColor,
 )
 
 private val LightColorPalette = lightColorScheme(
@@ -31,11 +35,15 @@ private val LightColorPalette = lightColorScheme(
     secondaryContainer = RoundedGrayTextField,
     tertiaryContainer = SearchBarColor,
     tertiary = PlaceholderText,
+    onTertiaryContainer = ExitButtonGray,
     onSurfaceVariant = Border,
     background = Background,
     onBackground = DarkBackground,
     onSurface = SearchIconColor,
-    onTertiary = MoreDarkTextColor
+    onTertiary = MoreDarkTextColor,
+    surfaceContainer = GrayStarColor,
+    surfaceBright = ButtonColor,
+    surfaceDim = PrisingTextColor,
 
 
     /* Other default colors to override

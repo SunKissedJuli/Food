@@ -5,5 +5,6 @@ data class RestaurantDetailsUiState(
     val time: String = "20 min",
     val deliveryCost: String = "Free",
     val name: String = "Spicy restaurant",
+    val isFilterDialog: Boolean = false,
     val description: String = "Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
 )
