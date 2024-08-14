@@ -44,6 +44,7 @@ import com.example.food.components.ChooseDelivery
 import com.example.food.components.ChooseOffers
 import com.example.food.components.ChoosePrising
 import com.example.food.components.DetailsBlock
+import com.example.food.components.ImageViewer
 import com.example.food.components.RestaurantComponentChoose
 import com.example.food.components.RoundedOrangeButton
 import com.example.food.components.StarRating
@@ -58,20 +59,12 @@ fun RestaurantDetailsScreen(navController: NavHostController){
         FilterDialog({viewModel.showFilterDialog()})
     }
 
-
     LazyColumn(
         Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)) {
         item{
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .clip(RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp))
-                    .background(MaterialTheme.colorScheme.onSecondary))
-
-
+           ImageViewer()
             Column(
                 Modifier
                     .fillMaxSize()
@@ -116,7 +109,10 @@ fun RestaurantDetailsScreen(navController: NavHostController){
         Modifier
             .fillMaxSize()
             .padding(10.dp)){
-        ButtonBack({navController.navigate(Screen.Home.route)})
+        ButtonBack(onClick = { navController.navigate(Screen.Home.route){
+            launchSingleTop = true
+            popUpTo(navController.graph.id){ inclusive = true } }})
+
         ButtonMenu({viewModel.showFilterDialog()}, modifier = Modifier.align(Alignment.TopEnd))
     }
 }

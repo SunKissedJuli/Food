@@ -70,4 +70,7 @@ dependencies {
     // Koin dependencies
     implementation("io.insert-koin:koin-android:3.4.0")
     implementation("io.insert-koin:koin-androidx-compose:3.4.0")
+
+    implementation(libs.google.accompanist.pager) // Проверьте актуальную версию
+    implementation(libs.accompanist.pager.indicators)// Для индикаторов
 }
