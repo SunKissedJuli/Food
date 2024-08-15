@@ -30,7 +30,7 @@ fun ButtonFavorite(onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
             isSelected = !isSelected },
         modifier = modifier
             .padding(top = 25.dp, end = 20.dp)
-            .size(50.dp)
+            .size(45.dp)
             .clip(CircleShape)
             .background(MaterialTheme.colorScheme.background)) {
         Icon(painter = painterResource(R.drawable.icon_favorite),

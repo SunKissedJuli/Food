@@ -18,9 +18,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -39,12 +39,10 @@ import com.example.food.R
 import com.example.food.components.AddFoodCard
 import com.example.food.components.ButtonBack
 import com.example.food.components.ButtonMenu
-import com.example.food.components.CategoryComponent
 import com.example.food.components.ChooseDelivery
 import com.example.food.components.ChooseOffers
 import com.example.food.components.ChoosePrising
 import com.example.food.components.DetailsBlock
-import com.example.food.components.ImageViewer
 import com.example.food.components.RestaurantComponentChoose
 import com.example.food.components.RoundedOrangeButton
 import com.example.food.components.StarRating
@@ -59,66 +57,101 @@ fun RestaurantDetailsScreen(navController: NavHostController){
         FilterDialog({viewModel.showFilterDialog()})
     }
 
-    LazyColumn(
-        Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)) {
-        item{
-           ImageViewer()
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .padding(20.dp)) {
-                DetailsBlock(star = uiState.star, deliveryCost = uiState.deliveryCost, time = uiState.time)
-                Spacer(modifier = Modifier.height(20.dp))
+    Scaffold(
+        topBar = {
+            Row(Modifier.fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.background),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween){
 
-                Text(text = uiState.name,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Bold)
+                Row(Modifier.padding(end = 20.dp, top = 10.dp).fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween){
+                    Row(Modifier.padding(start = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically){
+                        ButtonBack(onClick = { navController.navigate(Screen.Home.route){
+                            launchSingleTop = true
+                            popUpTo(navController.graph.id){ inclusive = true } }},
+                            background = MaterialTheme.colorScheme.onTertiaryContainer,
+                            tint = MaterialTheme.colorScheme.onTertiary,
+                            modifier = Modifier.padding(end = 15.dp))
 
-                Spacer(modifier = Modifier.height(15.dp))
-                Text(text = uiState.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.Thin)
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                LazyRow(Modifier.fillMaxWidth()) {
-                    items(5){
-                        Spacer(modifier = Modifier.width(5.dp))
-                        RestaurantComponentChoose(categoryName = stringResource(R.string.burger))
-                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(text = stringResource(R.string.rest_view),
+                            style = MaterialTheme.typography.displayMedium,
+                            color = MaterialTheme.colorScheme.onTertiary)
                     }
-                }
-                Spacer(modifier = Modifier.height(25.dp))
 
-                Text(text =stringResource(R.string.burger_10),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Normal)
-                Spacer(modifier = Modifier.height(5.dp))
+                    ButtonMenu({viewModel.showFilterDialog()},
+                        modifier = Modifier.padding(end = 10.dp),
+                        background = MaterialTheme.colorScheme.onTertiaryContainer,
+                        tint = MaterialTheme.colorScheme.onTertiary)
+                }
+
             }
         }
+    ) {
+        LazyColumn(
+            Modifier
+                .padding(it)
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)) {
+            item{
+                /*  ImageViewer(listOf(painterResource(R.drawable.icon_restoran_image), painterResource(R.drawable.icon_restoran_image),
+                      painterResource(R.drawable.icon_restoran_image), painterResource(R.drawable.icon_restoran_image),
+                      painterResource(R.drawable.icon_restoran_image)))*/
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+                        .height(180.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(MaterialTheme.colorScheme.onSecondary))
 
-        items(5){
-            Row(Modifier.fillMaxWidth()){
-                Column(Modifier.fillMaxWidth(0.5f)) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(20.dp)) {
+
+                    Text(text = uiState.name,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(15.dp))
+
+                    Text(text = uiState.description,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.Thin)
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    DetailsBlock(star = uiState.star, deliveryCost = uiState.deliveryCost, time = uiState.time)
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    LazyRow(Modifier.fillMaxWidth()) {
+                        items(5){
+                            Spacer(modifier = Modifier.width(5.dp))
+                            RestaurantComponentChoose(categoryName = stringResource(R.string.burger))
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(25.dp))
+
+                    Text(text =stringResource(R.string.burger_10),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.Normal)
+                    Spacer(modifier = Modifier.height(5.dp))
+                }
+            }
+
+            items(5){
+                Row(Modifier.fillMaxWidth()){
+                    Column(Modifier.fillMaxWidth(0.5f)) {
+                        AddFoodCard({navController.navigate(Screen.FoodDetails.route)})
+                    }
                     AddFoodCard({navController.navigate(Screen.FoodDetails.route)})
                 }
-                AddFoodCard({navController.navigate(Screen.FoodDetails.route)})
+                Spacer(modifier = Modifier.height(5.dp))
             }
-            Spacer(modifier = Modifier.height(5.dp))
+
         }
-
-    }
-    Box(
-        Modifier
-            .fillMaxSize()
-            .padding(10.dp)){
-        ButtonBack(onClick = { navController.navigate(Screen.Home.route){
-            launchSingleTop = true
-            popUpTo(navController.graph.id){ inclusive = true } }})
-
-        ButtonMenu({viewModel.showFilterDialog()}, modifier = Modifier.align(Alignment.TopEnd))
     }
 }
 

@@ -25,17 +25,13 @@ import androidx.compose.ui.unit.sp
 import com.example.food.R
 
 @Composable
-fun ChooseOffers() {
+fun ChooseOffers(buttonTexts: List<String> = listOf(stringResource(R.string.offer_delivery),
+    stringResource(R.string.offer_pick_up), stringResource(R.string.offer), stringResource(R.string.offer_online_pay))) {
     val textColor = MaterialTheme.colorScheme.surfaceDim
     val borderColor = MaterialTheme.colorScheme.onSurfaceVariant
     val whiteColor = MaterialTheme.colorScheme.background
     val orangeColor = MaterialTheme.colorScheme.onPrimaryContainer
 
-    val buttonTexts = listOf(
-        stringResource(R.string.offer_delivery),
-        stringResource(R.string.offer_pick_up),
-        stringResource(R.string.offer),
-        stringResource(R.string.offer_online_pay))
 
     Row(Modifier.fillMaxWidth()) {
         repeat(3) { index ->

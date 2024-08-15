@@ -158,7 +158,12 @@ fun FoodDetailsScreen(navController: NavHostController){
         Modifier
             .fillMaxSize()
             .padding(10.dp)){
-        ButtonBack({navController.navigate(Screen.RestauranDetails.route)})
+        ButtonBack(onClick = { navController.navigate(Screen.RestauranDetails.route){
+            launchSingleTop = true
+            popUpTo(navController.graph.id){ inclusive = true } }},
+            background = MaterialTheme.colorScheme.onTertiaryContainer,
+            tint = MaterialTheme.colorScheme.onTertiary,
+            modifier = Modifier.padding(start = 20.dp, top=25.dp))
         ButtonFavorite(modifier = Modifier.align(Alignment.TopEnd))
     }
 }

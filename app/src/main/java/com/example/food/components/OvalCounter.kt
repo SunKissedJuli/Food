@@ -45,7 +45,7 @@ fun OvalCounter(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center){
                     Icon(painter = painterResource(id = R.drawable.icon_simple_minus),
-                        contentDescription = "Increment",
+                        contentDescription = "",
                         tint = MaterialTheme.colorScheme.background )
                 }
             }
@@ -63,7 +63,7 @@ fun OvalCounter(
                     horizontalArrangement = Arrangement.Center){
 
                     Icon(painter = painterResource(id = R.drawable.icon_simple_plus),
-                        contentDescription = "Increment",
+                        contentDescription = "",
                         tint = MaterialTheme.colorScheme.background)
                 }
 

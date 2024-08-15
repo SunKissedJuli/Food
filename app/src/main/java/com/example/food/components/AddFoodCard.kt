@@ -30,7 +30,8 @@ import androidx.compose.ui.unit.dp
 import com.example.food.R
 
 @Composable
-fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza", description: String = "Uttora Coffe House", cost: String = "\$40"){
+fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza",
+                description: String = "Uttora Coffe House", cost: String = "\$40"){
 
     Box(Modifier.fillMaxWidth().
     background(Color.Transparent)

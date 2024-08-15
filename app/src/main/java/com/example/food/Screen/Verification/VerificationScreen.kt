@@ -90,7 +90,7 @@ fun VerificationScreen(navController: NavHostController){
                 .background(MaterialTheme.colorScheme.background)) {
 
 
-            Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)) {
+            Column(Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 
                 Row(Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
@@ -103,17 +103,8 @@ fun VerificationScreen(navController: NavHostController){
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
-                    VerifyTextField(value = "", onValueChange = {})
-
-                    VerifyTextField(value = "", onValueChange = {})
-
-                    VerifyTextField(value = "", onValueChange = {})
-
-                    VerifyTextField(value = "", onValueChange = {})
-                }
-
-                Spacer(modifier = Modifier.height(25.dp))
+                VerifyTextField(values = uiState.code, onValueChange = viewModel::updateCode)
+                Spacer(modifier = Modifier.height(35.dp))
 
                 RoundedOrangeButton(onClick = { navController.navigate(Screen.Home.route){
                     launchSingleTop = true

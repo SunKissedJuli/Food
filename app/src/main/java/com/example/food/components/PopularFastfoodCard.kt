@@ -20,36 +20,26 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PopularFastfoodCard(name: String = "European Pizza", description: String = "Uttora Coffe House"){
 
-/* Box(modifier = Modifier
-        .width(160.dp)
-        .height(130.dp)
+    Box(modifier = Modifier
+        .height(125.dp)
+        .width(155.dp)
         .clip(RoundedCornerShape(10.dp))
-        .shadow(15.dp, shape = RoundedCornerShape(10.dp))){*/
+        .background(MaterialTheme.colorScheme.background)){
 
-        Box(modifier = Modifier
-         //   .align(Alignment.Center)
-            .height(125.dp)
-            .width(155.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.background)){
+        Column(Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Box(Modifier
+                    .width(130.dp)
+                    .height(70.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(MaterialTheme.colorScheme.onSecondary)){}
 
-            Column(Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center) {
-                Box(Modifier
-                        .width(130.dp)
-                        .height(70.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(MaterialTheme.colorScheme.onSecondary)){}
-
-                Spacer(modifier = Modifier.height(5.dp))
-                Text(text = name, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onTertiary)
-                Spacer(modifier = Modifier.height(5.dp))
-                Text(text = description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
-                Spacer(modifier = Modifier.height(10.dp))
-            }
-
-
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(text = name, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onTertiary)
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(text = description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
+            Spacer(modifier = Modifier.height(10.dp))
         }
-  //  }
+    }
 }

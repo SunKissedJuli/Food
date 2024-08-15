@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -27,19 +28,16 @@ import androidx.compose.ui.unit.sp
 import com.example.food.R
 
 @Composable
-fun ChoosePrising() {
+fun ChoosePrising(buttonTexts: List<String> = listOf(
+    stringResource(R.string.dollar), stringResource(R.string.dollar) + stringResource(R.string.dollar),
+    stringResource(R.string.dollar) + stringResource(R.string.dollar) + stringResource(R.string.dollar))) {
+
     val textColor = MaterialTheme.colorScheme.surfaceDim
     val borderColor = MaterialTheme.colorScheme.onSurfaceVariant
     val whiteColor = MaterialTheme.colorScheme.background
     val orangeColor = MaterialTheme.colorScheme.onPrimaryContainer
 
     var selectedButtonIndex by remember { mutableStateOf(-1) }
-
-    val buttonTexts = listOf(
-        stringResource(R.string.dollar),
-        stringResource(R.string.dollar) + stringResource(R.string.dollar),
-        stringResource(R.string.dollar) + stringResource(R.string.dollar) + stringResource(R.string.dollar)
-    )
 
     Row(Modifier.fillMaxWidth()) {
         repeat(3) { index ->
