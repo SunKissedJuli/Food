@@ -103,7 +103,8 @@ fun VerificationScreen(navController: NavHostController){
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
-                VerifyTextField(values = uiState.code, onValueChange = viewModel::updateCode)
+                VerifyTextField(values = uiState.code, onValueChange = {newValue, isFilled ->
+                viewModel.updateCode(newValue)})
                 Spacer(modifier = Modifier.height(35.dp))
 
                 RoundedOrangeButton(onClick = { navController.navigate(Screen.Home.route){

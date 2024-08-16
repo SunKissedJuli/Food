@@ -59,12 +59,17 @@ fun RestaurantDetailsScreen(navController: NavHostController){
 
     Scaffold(
         topBar = {
-            Row(Modifier.fillMaxWidth()
+            Row(
+                Modifier
+                    .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.background),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween){
 
-                Row(Modifier.padding(end = 20.dp, top = 10.dp).fillMaxWidth(),
+                Row(
+                    Modifier
+                        .padding(end = 20.dp, top = 10.dp, bottom = 10.dp)
+                        .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween){
                     Row(Modifier.padding(start = 20.dp),
@@ -86,8 +91,8 @@ fun RestaurantDetailsScreen(navController: NavHostController){
                         background = MaterialTheme.colorScheme.onTertiaryContainer,
                         tint = MaterialTheme.colorScheme.onTertiary)
                 }
-
             }
+
         }
     ) {
         LazyColumn(

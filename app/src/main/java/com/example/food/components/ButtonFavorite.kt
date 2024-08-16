@@ -14,17 +14,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.food.R
 
 @Composable
-fun ButtonFavorite(onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
-    val tintColor = MaterialTheme.colorScheme.surfaceDim
-    val tintChooseColor = MaterialTheme.colorScheme.surfaceTint
-    var isSelected by remember { mutableStateOf(false) }
+fun ButtonFavorite(onClick: () -> Unit = {}, modifier: Modifier = Modifier,
+                   background: Color = MaterialTheme.colorScheme.background,
+                   tintColor: Color = MaterialTheme.colorScheme.surfaceDim,
+                   tintColorChoose: Color = MaterialTheme.colorScheme.surfaceTint) {
 
-    val tint = if (isSelected) tintChooseColor else tintColor
+    var isSelected by remember { mutableStateOf(false) }
+    val tint = if (isSelected) tintColorChoose else tintColor
 
     IconButton(onClick = { onClick()
             isSelected = !isSelected },
@@ -32,7 +34,7 @@ fun ButtonFavorite(onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
             .padding(top = 25.dp, end = 20.dp)
             .size(45.dp)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.background)) {
+            .background(background)) {
         Icon(painter = painterResource(R.drawable.icon_favorite),
             contentDescription = null, tint = tint)
     }

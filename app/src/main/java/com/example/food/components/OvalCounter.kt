@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.food.R
@@ -27,11 +28,15 @@ fun OvalCounter(
     count: Int = 0,
     onIncrement: () -> Unit,
     onDeIncrement: ()-> Unit,
-    modifier: Modifier = Modifier
-) {
+    modifier: Modifier = Modifier,
+    background: Color = MaterialTheme.colorScheme.onBackground,
+    buttonColor: Color = MaterialTheme.colorScheme.secondary,
+    tintColor: Color = MaterialTheme.colorScheme.background,
+    countColor: Color = MaterialTheme.colorScheme.background) {
+
     Box(modifier = modifier.size(130.dp, 55.dp)
         .clip(RoundedCornerShape(30.dp))
-        .background(MaterialTheme.colorScheme.onBackground)
+        .background(background)
         .padding(horizontal = 10.dp),
         contentAlignment = Alignment.Center) {
 
@@ -41,32 +46,29 @@ fun OvalCounter(
 
             IconButton(onClick = onDeIncrement) {
                 Row(Modifier.size(28.dp).clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.secondary),
+                    .background(buttonColor),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center){
                     Icon(painter = painterResource(id = R.drawable.icon_simple_minus),
-                        contentDescription = "",
-                        tint = MaterialTheme.colorScheme.background )
+                        contentDescription = "", tint = tintColor)
                 }
             }
 
             Text(text = count.toString(),
                 style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.background,
+                color = countColor,
                 modifier = Modifier.weight(1f)
                     .wrapContentSize(Alignment.Center))
 
             IconButton(onClick = onIncrement) {
                 Row(Modifier.size(28.dp).clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.secondary),
+                    .background(buttonColor),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center){
 
                     Icon(painter = painterResource(id = R.drawable.icon_simple_plus),
-                        contentDescription = "",
-                        tint = MaterialTheme.colorScheme.background)
+                        contentDescription = "", tint = tintColor)
                 }
-
             }
         }
     }

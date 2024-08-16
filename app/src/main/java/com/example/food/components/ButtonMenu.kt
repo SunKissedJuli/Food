@@ -22,6 +22,7 @@ import com.example.food.R
 fun ButtonMenu(onClick: ()->Unit = {}, modifier: Modifier = Modifier,
                background: Color = MaterialTheme.colorScheme.secondary,
                tint: Color = MaterialTheme.colorScheme.background){
+
     IconButton(onClick = onClick,
         modifier = modifier.size(45.dp)) {
         Row(Modifier.size(45.dp).clip(CircleShape)

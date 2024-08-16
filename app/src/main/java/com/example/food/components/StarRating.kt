@@ -17,14 +17,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.food.R
 
 @Composable
-fun StarRating() {
-    val tintColor = MaterialTheme.colorScheme.surfaceContainer
-    val tintChooseColor = MaterialTheme.colorScheme.surfaceBright
+fun StarRating(
+    tintColor: Color = MaterialTheme.colorScheme.surfaceContainer,
+    tintChooseColor: Color = MaterialTheme.colorScheme.surfaceBright ) {
 
     var rating by remember { mutableStateOf(0) }
 

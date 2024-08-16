@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -24,18 +25,22 @@ import androidx.navigation.NavHostController
 import com.example.food.R
 
 @Composable
-fun RestoranCard(name: String, description: String, onClick: ()->Unit = {},
-                 star: String = "4.7",  deliveryCost: String = "Free", time: String = "20 min"){
+fun RestoranCard(
+    name: String, description: String, onClick: ()->Unit = {},
+    star: String = "4.7", deliveryCost: String = "Free", time: String = "20 min",
+    background: Color = MaterialTheme.colorScheme.background,
+    boxColor: Color = MaterialTheme.colorScheme.onSecondary ){
     Column(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background)
+            .background(background)
             .clickable { onClick() }) {
         Box(modifier = Modifier
             .fillMaxWidth()
             .height(170.dp)
             .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.onSecondary))
+            .background(boxColor))
+
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = name, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onTertiary)
         Spacer(modifier = Modifier.height(7.dp))

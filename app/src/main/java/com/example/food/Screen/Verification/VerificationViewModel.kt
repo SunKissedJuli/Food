@@ -11,14 +11,7 @@ class VerificationViewModel(): ViewModel() {
     private val _uiState = MutableStateFlow(VerificationUiState())
     val uiState: StateFlow<VerificationUiState> = _uiState.asStateFlow()
 
-    fun updateCode(index: Int, newValue: String) {
-        if (newValue.length <= 1 && newValue.all { it.isDigit() }) {
-            _uiState.update { currentState ->
-                val updatedCode = currentState.code.toMutableList().apply {
-                    this[index] = newValue
-                }
-                currentState.copy(code = updatedCode)
-            }
-        }
+    fun updateCode(newValue: String) {
+        _uiState.value = _uiState.value.copy(code = newValue)
     }
 }

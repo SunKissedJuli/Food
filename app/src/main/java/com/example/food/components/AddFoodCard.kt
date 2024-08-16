@@ -30,8 +30,11 @@ import androidx.compose.ui.unit.dp
 import com.example.food.R
 
 @Composable
-fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza",
-                description: String = "Uttora Coffe House", cost: String = "\$40"){
+fun AddFoodCard(
+    onClick: ()->Unit, name: String = "European Pizza",
+    description: String = "Uttora Coffe House", cost: String = "\$40",
+    boxColor: Color = MaterialTheme.colorScheme.onSecondary,
+    background: Color = MaterialTheme.colorScheme.background){
 
     Box(Modifier.fillMaxWidth().
     background(Color.Transparent)
@@ -44,7 +47,7 @@ fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza",
                 .align(Alignment.Center)
                 .height(175.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(MaterialTheme.colorScheme.background)
+                .background(background)
                 .clickable { onClick() }) {
 
             Column(Modifier.fillMaxSize()
@@ -55,7 +58,7 @@ fun AddFoodCard(onClick: ()->Unit, name: String = "European Pizza",
                             .width(110.dp)
                             .height(70.dp)
                             .clip(RoundedCornerShape(10.dp))
-                            .background(MaterialTheme.colorScheme.onSecondary))
+                            .background(boxColor))
                 }
 
                 Spacer(modifier = Modifier.height(5.dp))

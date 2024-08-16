@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,14 +29,15 @@ import androidx.compose.ui.unit.sp
 import com.example.food.R
 
 @Composable
-fun ChoosePrising(buttonTexts: List<String> = listOf(
-    stringResource(R.string.dollar), stringResource(R.string.dollar) + stringResource(R.string.dollar),
-    stringResource(R.string.dollar) + stringResource(R.string.dollar) + stringResource(R.string.dollar))) {
-
-    val textColor = MaterialTheme.colorScheme.surfaceDim
-    val borderColor = MaterialTheme.colorScheme.onSurfaceVariant
-    val whiteColor = MaterialTheme.colorScheme.background
-    val orangeColor = MaterialTheme.colorScheme.onPrimaryContainer
+fun ChoosePrising(
+    buttonTexts: List<String> = listOf(stringResource(R.string.dollar), stringResource(R.string.dollar) + stringResource(R.string.dollar),
+    stringResource(R.string.dollar) + stringResource(R.string.dollar) + stringResource(R.string.dollar)),
+    textColor: Color = MaterialTheme.colorScheme.surfaceDim,
+    textChooseColor: Color = MaterialTheme.colorScheme.background,
+    borderColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    borderChooseColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    backgroundColor: Color = MaterialTheme.colorScheme.background,
+    backgroundChooseColor: Color = MaterialTheme.colorScheme.onPrimaryContainer) {
 
     var selectedButtonIndex by remember { mutableStateOf(-1) }
 
@@ -46,14 +48,14 @@ fun ChoosePrising(buttonTexts: List<String> = listOf(
             TextButton(
                 onClick = { selectedButtonIndex = index },
                 modifier = Modifier.background(
-                        if (isChosen) orangeColor else whiteColor,
+                        if (isChosen) backgroundChooseColor else backgroundColor,
                         CircleShape)
                     .border(width = 2.dp, shape = CircleShape,
-                        color = if (isChosen) orangeColor else borderColor)
+                        color = if (isChosen) borderChooseColor else borderColor)
                     .size(50.dp)) {
                 Text(
                     text = buttonTexts[index],
-                    color = if (isChosen) whiteColor else textColor,
+                    color = if (isChosen) textChooseColor else textColor,
                     style = MaterialTheme.typography.displayMedium,
                     fontWeight = FontWeight.Bold, fontSize = 15.sp)
             }

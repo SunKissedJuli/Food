@@ -19,8 +19,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.preferKeepClear
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -80,15 +82,18 @@ fun HomeScreen(navController: NavHostController){
                 query = uiState.searchText, onQueryChange = {viewModel.updateSearchString(it)},
                 onSearch = {viewModel.updateSearchContainer()},
                 hint = stringResource(R.string.search_hint),
+                onClick = viewModel::updateSearchContainer,
                 leadingIcon =  {
                     Icon(painter = painterResource(id = R.drawable.icon_search),
                         contentDescription = "",
                         modifier = Modifier.padding(start = 5.dp),
-                        tint = MaterialTheme.colorScheme.onSurface)}){
+                        tint = MaterialTheme.colorScheme.onSurface)})
 
+            if(uiState.searchContainer){
                 Column(
                     Modifier
                         .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
                         .background(MaterialTheme.colorScheme.background)) {
                     Column(Modifier.padding(10.dp)) {
                         Spacer(modifier = Modifier.height(10.dp))
@@ -146,9 +151,7 @@ fun HomeScreen(navController: NavHostController){
                 }
             }
         }
-
-        }
-    ) {
+    }) {
         Box(
             Modifier
                 .fillMaxSize()

@@ -23,33 +23,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun RestaurantComponentChoose(categoryName: String){
-    val backgroundColor = MaterialTheme.colorScheme.background
-    val background = remember { mutableStateOf(backgroundColor) }
-    val backgroundClick = MaterialTheme.colorScheme.onPrimaryContainer
-    Box(
-        modifier = Modifier
-            .width(90.dp)
-            .height(45.dp)
-            .shadow(5.dp, shape = RoundedCornerShape(30.dp))) {
+fun RestaurantComponentChoose(
+    categoryName: String,
+    backgroundChooseColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    background: Color = MaterialTheme.colorScheme.background,
+    fontColor: Color = MaterialTheme.colorScheme.secondary,
+    fontChooseColor: Color = MaterialTheme.colorScheme.background){
 
-        Box(
-            Modifier.height(45.dp).clip(RoundedCornerShape(30.dp))
-            .background(background.value)
-            .clickable { background.value = backgroundClick }) {
+    val isChosen = remember { mutableStateOf(false) }
+
+    Box(modifier = Modifier.width(90.dp).height(45.dp)
+        .shadow(5.dp, shape = RoundedCornerShape(30.dp))) {
+
+        Box(Modifier.height(45.dp).clip(RoundedCornerShape(30.dp))
+            .background(if(isChosen.value) backgroundChooseColor else background)
+            .clickable { isChosen.value = !isChosen.value }) {
 
             Row(Modifier.fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center) {
-                Text(
-                    text = categoryName,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
-                )
+
+                Text(text = categoryName, style = MaterialTheme.typography.bodyMedium,
+                    color = if(isChosen.value) fontChooseColor else fontColor)
             }
         }
     }

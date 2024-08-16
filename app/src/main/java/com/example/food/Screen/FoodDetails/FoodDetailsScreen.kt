@@ -74,13 +74,27 @@ fun FoodDetailsScreen(navController: NavHostController){
                 }
 
             }
+        },
+        topBar = {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)){
+                ButtonBack(onClick = { navController.navigate(Screen.RestauranDetails.route){
+                    launchSingleTop = true
+                    popUpTo(navController.graph.id){ inclusive = true } }},
+                    background = MaterialTheme.colorScheme.background,
+                    tint = MaterialTheme.colorScheme.onTertiary,
+                    modifier = Modifier.padding(start = 20.dp, top=25.dp))
+                ButtonFavorite(modifier = Modifier.align(Alignment.TopEnd))
+            }
         }
     ) {
         Column(
             Modifier
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize()
-                .padding(it)
+                .padding(bottom = it.calculateBottomPadding())
                 .background(MaterialTheme.colorScheme.background)) {
 
             Box(
@@ -152,18 +166,5 @@ fun FoodDetailsScreen(navController: NavHostController){
 
             }
         }
-    }
-
-    Box(
-        Modifier
-            .fillMaxSize()
-            .padding(10.dp)){
-        ButtonBack(onClick = { navController.navigate(Screen.RestauranDetails.route){
-            launchSingleTop = true
-            popUpTo(navController.graph.id){ inclusive = true } }},
-            background = MaterialTheme.colorScheme.onTertiaryContainer,
-            tint = MaterialTheme.colorScheme.onTertiary,
-            modifier = Modifier.padding(start = 20.dp, top=25.dp))
-        ButtonFavorite(modifier = Modifier.align(Alignment.TopEnd))
     }
 }

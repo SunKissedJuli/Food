@@ -15,16 +15,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PopularFastfoodCard(name: String = "European Pizza", description: String = "Uttora Coffe House"){
+fun PopularFastfoodCard(
+    name: String = "European Pizza", description: String = "Uttora Coffe House",
+    boxColor: Color = MaterialTheme.colorScheme.onSecondary,
+    background: Color = MaterialTheme.colorScheme.background){
 
     Box(modifier = Modifier
         .height(125.dp)
         .width(155.dp)
         .clip(RoundedCornerShape(10.dp))
-        .background(MaterialTheme.colorScheme.background)){
+        .background(background)){
 
         Column(Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -33,7 +37,7 @@ fun PopularFastfoodCard(name: String = "European Pizza", description: String = "
                     .width(130.dp)
                     .height(70.dp)
                     .clip(RoundedCornerShape(10.dp))
-                    .background(MaterialTheme.colorScheme.onSecondary)){}
+                    .background(boxColor)){}
 
             Spacer(modifier = Modifier.height(5.dp))
             Text(text = name, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.onTertiary)

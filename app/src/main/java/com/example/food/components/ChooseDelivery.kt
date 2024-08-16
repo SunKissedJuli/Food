@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,13 +27,17 @@ import androidx.compose.ui.unit.sp
 import com.example.food.R
 
 @Composable
-fun ChooseDelivery(buttonTexts: List<String> = listOf(stringResource(R.string.delivery_short),
-    stringResource(R.string.delivery_medium), stringResource(R.string.delivery_long))) {
+fun ChooseDelivery(
+    buttonTexts: List<String> = listOf(stringResource(R.string.delivery_short),
+    stringResource(R.string.delivery_medium), stringResource(R.string.delivery_long)),
+    textColor: Color = MaterialTheme.colorScheme.surfaceDim,
+    textChooseColor: Color = MaterialTheme.colorScheme.background,
+    borderColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    borderChooseColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    backgroundColor: Color = MaterialTheme.colorScheme.background,
+    backgroundChooseColor: Color = MaterialTheme.colorScheme.onPrimaryContainer) {
 
-    val textColor = MaterialTheme.colorScheme.surfaceDim
-    val borderColor = MaterialTheme.colorScheme.onSurfaceVariant
-    val whiteColor = MaterialTheme.colorScheme.background
-    val orangeColor = MaterialTheme.colorScheme.onPrimaryContainer
+
 
     var selectedButtonIndex by remember { mutableStateOf(-1) }
 
@@ -43,13 +48,13 @@ fun ChooseDelivery(buttonTexts: List<String> = listOf(stringResource(R.string.de
             TextButton(
                 onClick = { selectedButtonIndex = index },
                 modifier = Modifier.background(
-                    if (isChosen) orangeColor else whiteColor,
+                    if (isChosen) backgroundChooseColor else backgroundColor,
                     RoundedCornerShape(30.dp))
-                    .border(width = 2.dp, shape =   RoundedCornerShape(30.dp),
-                        color = if (isChosen) orangeColor else borderColor)
+                    .border(width = 2.dp, shape = RoundedCornerShape(30.dp),
+                        color = if (isChosen) borderChooseColor else borderColor)
                     .height(46.dp)) {
                 Text(text = buttonTexts[index],
-                    color = if (isChosen) whiteColor else textColor,
+                    color = if (isChosen) textChooseColor else textColor,
                     style = MaterialTheme.typography.titleLarge, fontSize = 15.sp)
             }
             Spacer(modifier = Modifier.width(10.dp))
