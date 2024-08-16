@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,14 +36,13 @@ import com.example.food.components.RoundedGrayTextField
 import com.example.food.components.RoundedOrangeButton
 import com.example.food.navigation.Screen
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun RegistrationScreen(navController: NavHostController) {
     val viewModel: RegistrationViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
 
-    Scaffold(
-        topBar = {
+    Scaffold(topBar = {
             ButtonBack(
                 onClick = { navController.navigate(Screen.Login.route) },
                 background = MaterialTheme.colorScheme.background,
