@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Scaffold
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -35,83 +36,137 @@ import com.example.food.components.RoundedGrayTextField
 import com.example.food.components.RoundedOrangeButton
 import com.example.food.navigation.Screen
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun RegistrationScreen(navController: NavHostController){
+fun RegistrationScreen(navController: NavHostController) {
     val viewModel: RegistrationViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
 
-    Box(
-        Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onBackground)) {
-
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.3f),
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            Text(text = stringResource(R.string.sign_up), style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.background)
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(text = stringResource(R.string.please_sign_up), style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.background)
+    Scaffold(
+        topBar = {
+            ButtonBack(
+                onClick = { navController.navigate(Screen.Login.route) },
+                background = MaterialTheme.colorScheme.background,
+                tint = MaterialTheme.colorScheme.onTertiary,
+                modifier = Modifier.padding(start = 20.dp, top = 25.dp)
+            )
         }
-
+    ) {
         Box(
             Modifier
                 .fillMaxSize()
-                .align(Alignment.TopStart)){
-            Row(Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween){
-                Image(painter = painterResource(R.drawable.icon_black_ellipse),
-                    modifier = Modifier.alpha(0.5f), contentDescription = "" )
-                Icon(painter = painterResource(R.drawable.icon_broken_line), contentDescription = "",
-                    tint = MaterialTheme.colorScheme.primaryContainer, modifier = Modifier.alpha(0.4f))
-
+                .background(MaterialTheme.colorScheme.onBackground)
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.3f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.sign_up),
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = MaterialTheme.colorScheme.background
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = stringResource(R.string.please_sign_up),
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.background
+                )
             }
-        }
 
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomEnd)
-                .clip(RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp))
-                .background(MaterialTheme.colorScheme.background)) {
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .align(Alignment.TopStart)
+            ) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.icon_black_ellipse),
+                        modifier = Modifier.alpha(0.5f),
+                        contentDescription = ""
+                    )
+                    Icon(
+                        painter = painterResource(R.drawable.icon_broken_line),
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.primaryContainer,
+                        modifier = Modifier.alpha(0.4f)
+                    )
+                }
+            }
 
-            Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)) {
-                Text(text = stringResource(R.string.name), style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary)
-                RoundedGrayTextField(value = uiState.name, placeholder = stringResource(R.string.name_placeholder),
-                    onValueChange = viewModel::updateName,
-                    modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(modifier = Modifier.height(25.dp))
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomEnd)
+                    .clip(RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp))
+                    .background(MaterialTheme.colorScheme.background)
+            ) {
+                Column(Modifier.padding(top = 30.dp, start = 20.dp, end = 20.dp)) {
+                    Text(
+                        text = stringResource(R.string.name),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    RoundedGrayTextField(
+                        value = uiState.name,
+                        placeholder = stringResource(R.string.name_placeholder),
+                        onValueChange = viewModel::updateName,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(25.dp))
 
-                Text(text = stringResource(R.string.email), style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary)
-                RoundedGrayTextField(value = uiState.email, placeholder = stringResource(R.string.password_mask),
-                    onValueChange = viewModel::updateEmail,
-                    modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(modifier = Modifier.height(25.dp))
+                    Text(
+                        text = stringResource(R.string.email),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    RoundedGrayTextField(
+                        value = uiState.email,
+                        placeholder = stringResource(R.string.password_mask),
+                        onValueChange = viewModel::updateEmail,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(25.dp))
 
-                Text(text = stringResource(R.string.password), style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary)
-                RoundedGrayTextField(value = uiState.password, placeholder = stringResource(R.string.password_mask),
-                    onValueChange = viewModel::updatePassword,
-                    modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(modifier = Modifier.height(25.dp))
+                    Text(
+                        text = stringResource(R.string.password),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    RoundedGrayTextField(
+                        value = uiState.password,
+                        placeholder = stringResource(R.string.password_mask),
+                        onValueChange = viewModel::updatePassword,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(25.dp))
 
-                Text(text = stringResource(R.string.password_confirm).uppercase(), style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary)
-                RoundedGrayTextField(value = uiState.confirmPassword, placeholder = stringResource(R.string.password_mask),
-                    onValueChange = viewModel::updateConfirmPassword,
-                    modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(modifier = Modifier.height(25.dp))
+                    Text(
+                        text = stringResource(R.string.password_confirm).uppercase(),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    RoundedGrayTextField(
+                        value = uiState.confirmPassword,
+                        placeholder = stringResource(R.string.password_mask),
+                        onValueChange = viewModel::updateConfirmPassword,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                    Spacer(modifier = Modifier.height(25.dp))
 
-                RoundedOrangeButton(onClick = {navController.navigate(Screen.Verification.route)}, buttonText = stringResource(R.string.sign_up),
-                    modifier = Modifier.align(Alignment.CenterHorizontally))
-
+                    RoundedOrangeButton(
+                        onClick = { navController.navigate(Screen.Verification.route) },
+                        buttonText = stringResource(R.string.sign_up),
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
             }
         }
     }
-    ButtonBack(onClick = {navController.navigate(Screen.Login.route)})
 }
